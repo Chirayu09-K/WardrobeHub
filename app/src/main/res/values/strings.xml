@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WardrobeHub</string>
+    <string name="greeting_name">Android</string>
+    <string name="hello_greeting">Hello %1$s!</string>
+</resources>
