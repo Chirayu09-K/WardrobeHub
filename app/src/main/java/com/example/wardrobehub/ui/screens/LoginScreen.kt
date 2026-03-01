@@ -1,4 +1,4 @@
-package com.example.wardrobehub.ui.auth
+package com.example.wardrobehub.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -9,12 +9,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wardrobehub.R
+import com.example.wardrobehub.utils.AuthUiState
 
 @Composable
 fun LoginScreen(
@@ -43,7 +45,7 @@ fun LoginScreen(
             onValueChange = { email = it },
             label = { Text("Email") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag("email_field"),
             enabled = !isLoading,
             shape = RoundedCornerShape(16.dp)
         )
@@ -55,7 +57,7 @@ fun LoginScreen(
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag("password_field"),
             enabled = !isLoading,
             shape = RoundedCornerShape(16.dp)
         )
@@ -64,7 +66,7 @@ fun LoginScreen(
         Button(
             onClick = { onLogin(email, password) },
             enabled = !isLoading,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag("login_button"),
             shape = RoundedCornerShape(16.dp)
         ) {
             if (isLoading) {
@@ -74,11 +76,11 @@ fun LoginScreen(
             }
         }
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = onNavigateToForgotPassword, enabled = !isLoading) {
+        TextButton(onClick = onNavigateToForgotPassword, enabled = !isLoading, modifier = Modifier.testTag("forgot_password_button")) {
             Text("Forgot Password?")
         }
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = onNavigateToRegister, enabled = !isLoading) {
+        TextButton(onClick = onNavigateToRegister, enabled = !isLoading, modifier = Modifier.testTag("register_button")) {
             Text("Don't have an account? Register")
         }
     }

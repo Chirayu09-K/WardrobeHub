@@ -1,4 +1,4 @@
-package com.example.wardrobehub.ui.auth
+package com.example.wardrobehub.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -14,6 +14,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wardrobehub.R
+import com.example.wardrobehub.utils.AuthUiState
 
 @Composable
 fun ForgotPasswordScreen(
