@@ -1,4 +1,4 @@
-package com.example.wardrobehub.ui.auth
+package com.example.wardrobehub.utils
 
 sealed interface AuthUiState<out T> {
     object Idle : AuthUiState<Nothing>
