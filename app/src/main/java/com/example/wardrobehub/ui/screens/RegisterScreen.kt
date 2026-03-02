@@ -1,4 +1,4 @@
-package com.example.wardrobehub.ui.auth
+package com.example.wardrobehub.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -9,12 +9,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wardrobehub.R
+import com.example.wardrobehub.utils.AuthUiState
 
 @Composable
 fun RegisterScreen(
@@ -42,7 +44,7 @@ fun RegisterScreen(
             value = username,
             onValueChange = { username = it },
             label = { Text("Username") },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag("register_username_field"),
             enabled = !isLoading,
             shape = RoundedCornerShape(16.dp)
         )
@@ -53,7 +55,7 @@ fun RegisterScreen(
             onValueChange = { email = it },
             label = { Text("Email") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag("register_email_field"),
             enabled = !isLoading,
             shape = RoundedCornerShape(16.dp)
         )
@@ -65,7 +67,7 @@ fun RegisterScreen(
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag("register_password_field"),
             enabled = !isLoading,
             shape = RoundedCornerShape(16.dp)
         )
@@ -76,7 +78,7 @@ fun RegisterScreen(
                 onRegister(username, email, password)
             },
             enabled = !isLoading,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().testTag("register_button"),
             shape = RoundedCornerShape(16.dp)
         ) {
             if (isLoading) {
@@ -86,7 +88,7 @@ fun RegisterScreen(
             }
         }
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = onNavigateToLogin, enabled = !isLoading) {
+        TextButton(onClick = onNavigateToLogin, enabled = !isLoading, modifier = Modifier.testTag("login_link_button")) {
             Text("Already have an account? Login")
         }
     }
