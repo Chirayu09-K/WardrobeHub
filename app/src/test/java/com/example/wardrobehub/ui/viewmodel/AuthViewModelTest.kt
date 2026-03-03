@@ -70,7 +70,7 @@ class AuthViewModelTest {
 
     @Test
     fun `resetAuthState resets all states to Idle`() = runTest {
-        // First set some state
+
         whenever(authRepository.login("test@example.com", "password"))
             .thenReturn(flowOf(Result.success(User())))
         authViewModel.login("test@example.com", "password")
